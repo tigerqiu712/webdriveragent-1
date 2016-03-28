@@ -1,6 +1,6 @@
 {
   "name": "webdriveragent",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "webdriveragent",
   "keywords": ["webdriveragent"],
   "main": "index.js",
@@ -21,7 +21,7 @@
   "scripts": {
     "test": "make test",
     "jshint": "make jshint",
-    "install1": "unzip -o ./WebDriverAgent.zip -d ./ 1>/dev/null"
+    "install": "unzip -o ./WebDriverAgent.zip -d ./ 1>/dev/null"
   },
   "pre-commit": [
     "jshint"
