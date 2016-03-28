@@ -13,8 +13,10 @@
 
 'use strict';
 
-var webdriveragent = require('..');
+var WebDriverAgent = require('..');
 
 describe('test', function() {
-
+  it('should be ok', function() {
+    WebDriverAgent.shoule.be.ok;
+  });
 });
