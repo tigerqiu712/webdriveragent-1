@@ -212,7 +212,7 @@
 {
   FBXCTElementCache *elementCache = (FBXCTElementCache *)request.session.elementCache;
   XCUIElement *element = [elementCache elementForIndex:[request.parameters[@"id"] integerValue]];
-  [element pressForDuration:[request.arguments[@"duration"] floatValue]];
+  [element pressForDuration:[request.arguments[@"duration"] doubleValue]];
   return FBResponseDictionaryWithOK();
 }
 
@@ -272,9 +272,9 @@
 + (id<FBResponsePayload>)handleDrag:(FBRouteRequest *)request
 {
   FBXCTSession *session = (FBXCTSession *)request.session;
-  CGVector startPoint = CGVectorMake([request.arguments[@"fromX"] floatValue], [request.arguments[@"fromY"] floatValue]);
-  CGVector endPoint = CGVectorMake([request.arguments[@"toX"] floatValue], [request.arguments[@"toY"] floatValue]);
-  CGFloat duration = [request.arguments[@"duration"] floatValue];
+  CGVector startPoint = CGVectorMake([request.arguments[@"fromX"] doubleValue], [request.arguments[@"fromY"] doubleValue]);
+  CGVector endPoint = CGVectorMake([request.arguments[@"toX"] doubleValue], [request.arguments[@"toY"] doubleValue]);
+  CGFloat duration = [request.arguments[@"duration"] doubleValue];
   XCUICoordinate *appCoordinate = [[XCUICoordinate alloc] initWithElement:session.application normalizedOffset:CGVectorMake(0, 0)];
   XCUICoordinate *endCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:endPoint];
   XCUICoordinate *startCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:startPoint];
@@ -286,8 +286,8 @@
 {
   FBXCTElementCache *elementCache = (FBXCTElementCache *)request.session.elementCache;
   FBXCTSession *session = (FBXCTSession *)request.session;
-  CGFloat x = [request.arguments[@"x"] floatValue];
-  CGFloat y = [request.arguments[@"y"] floatValue];
+  CGFloat x = [request.arguments[@"x"] doubleValue];
+  CGFloat y = [request.arguments[@"y"] doubleValue];
   NSInteger elementID = [request.parameters[@"id"] integerValue];
   XCUIElement *element = [elementCache elementForIndex:elementID];
   if (element != nil) {

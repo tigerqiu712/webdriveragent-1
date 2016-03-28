@@ -38,7 +38,7 @@
   [[XCUIDevice sharedDevice] pressButton:XCUIDeviceButtonHome];
 
   NSNumber *requestedDuration = request.arguments[@"duration"];
-  CGFloat duration = (requestedDuration ? requestedDuration.floatValue : 3.f);
+  CGFloat duration = (requestedDuration ? requestedDuration.doubleValue : 3.0);
   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:duration]];
 
   [[XCUIApplication fb_SpringBoard] fb_tapApplicationWithIdentifier:applicationIdentifier];

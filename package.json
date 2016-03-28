@@ -21,7 +21,7 @@
   "scripts": {
     "test": "make test",
     "jshint": "make jshint",
-    "install": "unzip -o ./WebDriverAgent.zip -d ./ 1>/dev/null"
+    "install1": "unzip -o ./WebDriverAgent.zip -d ./ 1>/dev/null"
   },
   "pre-commit": [
     "jshint"
