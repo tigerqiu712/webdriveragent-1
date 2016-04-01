@@ -41,6 +41,7 @@ NSString *const FBApplicationCrashedException = @"FBApplicationCrashedException"
   if (!_application.running) {
     [[NSException exceptionWithName:FBApplicationCrashedException reason:@"Application is not running, possibly crashed" userInfo:nil] raise];
   }
+  [_application lastSnapshot];
   [_application resolve];
   return _application;
 }
