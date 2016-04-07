@@ -1,6 +1,6 @@
 {
   "name": "webdriveragent",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "webdriveragent",
   "keywords": ["webdriveragent"],
   "main": "index.js",
