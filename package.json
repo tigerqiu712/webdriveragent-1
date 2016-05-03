@@ -2,21 +2,24 @@
   "name": "webdriveragent",
   "version": "1.0.10",
   "description": "webdriveragent",
-  "keywords": ["webdriveragent"],
+  "keywords": [
+    "webdriveragent"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/xudafeng/webdriveragent.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "co-mocha": "*",
-    "mocha": "*",
-    "should": "*",
-    "jshint": "*",
+    "ios-simulator": "^1.0.7",
     "istanbul": "*",
-    "pre-commit": "1.1.1"
+    "jshint": "*",
+    "macaca-utils": "^0.1.8",
+    "mocha": "*",
+    "pre-commit": "1.1.1",
+    "should": "*"
   },
   "scripts": {
     "test": "make test",
