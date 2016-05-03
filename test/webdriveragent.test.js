@@ -13,10 +13,37 @@
 
 'use strict';
 
-var WebDriverAgent = require('..');
+const WebDriverAgent = require('..');
+const Simulator = require('ios-simulator');
+
+const _ = require('./common/utils');
 
 describe('test', function() {
   it('should be ok', function() {
-    WebDriverAgent.shoule.be.ok;
+    WebDriverAgent.should.be.ok;
+  });
+
+  it('should build success', function *(done) {
+    const agentPath = WebDriverAgent.agentPath;
+    var deviceId;
+
+    const devices = yield Simulator.getDevices();
+    const availableDevices = devices.filter(device => device.available);
+    const deviceString = 'iPhone 5s';
+
+    _.each(availableDevices, device => {
+      if (device.name === deviceString) {
+        deviceId = device.udid;
+      }
+    });
+
+    const cmd = `xcodebuild -workspace ${agentPath} -scheme WebDriverAgent -destination id=${deviceId} build`;
+
+    _.exec(cmd, {
+      maxBuffer: 1024 * 10 * 512
+    }).then((stdout) => {
+      console.log(stdout);
+      done();
+    });
   });
 });
