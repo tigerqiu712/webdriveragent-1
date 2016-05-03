@@ -31,6 +31,8 @@ describe('test', function() {
     const availableDevices = devices.filter(device => device.available);
     const deviceString = 'iPhone 5s';
 
+    console.log(availableDevices)
+
     _.each(availableDevices, device => {
       if (device.name === deviceString) {
         deviceId = device.udid;
@@ -38,6 +40,8 @@ describe('test', function() {
     });
 
     const cmd = `xcodebuild -workspace ${agentPath} -scheme WebDriverAgent -destination id=${deviceId} build`;
+
+    console.log(cmd)
 
     _.exec(cmd, {
       maxBuffer: 1024 * 10 * 512
