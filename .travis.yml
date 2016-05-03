@@ -1,9 +1,7 @@
 language: objective-c
 osx_image: xcode7.3
-before_script:
-    - . $HOME/.nvm/nvm.sh
-    - nvm install 4
-    - nvm use 4
-    - npm install
+before_install:
+  - brew update
+  - brew install node
 script:
   - make test
