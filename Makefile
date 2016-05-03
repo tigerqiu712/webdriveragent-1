@@ -10,7 +10,7 @@ test: zip install
 	@node --harmony \
 		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
 		-- \
-		--timeout 60000 \
+		--timeout 120000 \
 		--require co-mocha
 jshint:
 	@${npm_bin}/jshint .
