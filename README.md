@@ -32,7 +32,7 @@ $ npm i webdriveragent --save
 # add Pods
 # remove Inspector
 # build with zip compress before npm publish
-zip -r WebDriverAgent.zip ./WebDriverAgent
+make zip
 ```
 
 ## License

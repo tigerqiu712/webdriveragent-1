@@ -4,7 +4,9 @@ npm_bin= $$(npm bin)
 all: test
 install:
 	@npm install
-test: install
+zip:
+	zip -r WebDriverAgent.zip ./WebDriverAgent
+test: zip install
 	@node --harmony \
 		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
 		-- \
