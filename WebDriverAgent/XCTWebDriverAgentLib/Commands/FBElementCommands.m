@@ -272,11 +272,10 @@
 
 + (id<FBResponsePayload>)handleDrag:(FBRouteRequest *)request
 {
-    [FBWDALogger logFmt:@"-=-=-=-=- xdf =-=-=-="];
     FBXCTSession *session = (FBXCTSession *)request.session;
     CGVector startPoint = CGVectorMake([request.arguments[@"startX"] doubleValue], [request.arguments[@"startY"] doubleValue]);
     CGVector endPoint = CGVectorMake([request.arguments[@"endX"] doubleValue], [request.arguments[@"endY"] doubleValue]);
-    CGFloat duration = [request.arguments[@"duration"] doubleValue];
+    CGFloat duration = [request.arguments[@"duration"] doubleValue]/1000;
     XCUICoordinate *appCoordinate = [[XCUICoordinate alloc] initWithElement:session.application normalizedOffset:CGVectorMake(0, 0)];
     XCUICoordinate *endCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:endPoint];
     XCUICoordinate *startCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:startPoint];
