@@ -25,6 +25,7 @@
 #import "XCUIElement+WebDriverAttributes.h"
 #import "XCUIElement.h"
 #import "XCUIElementQuery.h"
+#import "FBWDALogger.h"
 
 @interface FBElementCommands ()
 @end
@@ -54,7 +55,7 @@
     [[FBRoute POST:@"/uiaElement/:id/touchAndHold"] respondWithTarget:self action:@selector(handleTouchAndHold:)],
     [[FBRoute POST:@"/uiaElement/:id/scroll"] respondWithTarget:self action:@selector(handleScroll:)],
     [[FBRoute POST:@"/uiaElement/:id/value"] respondWithTarget:self action:@selector(handleGetUIAElementValue:)],
-    [[FBRoute POST:@"/uiaTarget/:id/dragfromtoforduration"] respondWithTarget:self action:@selector(handleDrag:)],
+    [[FBRoute POST:@"/element/:id/swipe"] respondWithTarget:self action:@selector(handleDrag:)],
     [[FBRoute POST:@"/tap/:id"] respondWithTarget:self action:@selector(handleTap:)],
     [[FBRoute POST:@"/keys"] respondWithTarget:self action:@selector(handleKeys:)],
     [[FBRoute GET:@"/window/:id/size"] respondWithTarget:self action:@selector(handleGetWindowSize:)],
@@ -271,15 +272,16 @@
 
 + (id<FBResponsePayload>)handleDrag:(FBRouteRequest *)request
 {
-  FBXCTSession *session = (FBXCTSession *)request.session;
-  CGVector startPoint = CGVectorMake([request.arguments[@"fromX"] doubleValue], [request.arguments[@"fromY"] doubleValue]);
-  CGVector endPoint = CGVectorMake([request.arguments[@"toX"] doubleValue], [request.arguments[@"toY"] doubleValue]);
-  CGFloat duration = [request.arguments[@"duration"] doubleValue];
-  XCUICoordinate *appCoordinate = [[XCUICoordinate alloc] initWithElement:session.application normalizedOffset:CGVectorMake(0, 0)];
-  XCUICoordinate *endCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:endPoint];
-  XCUICoordinate *startCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:startPoint];
-  [startCoordinate pressForDuration:duration thenDragToCoordinate:endCoordinate];
-  return FBResponseDictionaryWithOK();
+    [FBWDALogger logFmt:@"-=-=-=-=- xdf =-=-=-="];
+    FBXCTSession *session = (FBXCTSession *)request.session;
+    CGVector startPoint = CGVectorMake([request.arguments[@"startX"] doubleValue], [request.arguments[@"startY"] doubleValue]);
+    CGVector endPoint = CGVectorMake([request.arguments[@"endX"] doubleValue], [request.arguments[@"endY"] doubleValue]);
+    CGFloat duration = [request.arguments[@"duration"] doubleValue];
+    XCUICoordinate *appCoordinate = [[XCUICoordinate alloc] initWithElement:session.application normalizedOffset:CGVectorMake(0, 0)];
+    XCUICoordinate *endCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:endPoint];
+    XCUICoordinate *startCoordinate = [[XCUICoordinate alloc] initWithCoordinate:appCoordinate pointsOffset:startPoint];
+    [startCoordinate pressForDuration:duration thenDragToCoordinate:endCoordinate];
+    return FBResponseDictionaryWithOK();
 }
 
 + (id<FBResponsePayload>)handleTap:(FBRouteRequest *)request
