@@ -21,7 +21,7 @@
 
 ## Installment
 
-```bash
+```shell
 $ npm i webdriveragent --save
 ```
 
