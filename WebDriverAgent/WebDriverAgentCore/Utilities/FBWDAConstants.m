@@ -33,8 +33,8 @@ static NSUInteger const DefaultPortRange = 100;
   }
 
   // Existence of USE_PORT in the environment implies the port range is managed by the launching process.
-  if (NSProcessInfo.processInfo.environment[@"USE_PORT"]) {
-    return NSMakeRange([NSProcessInfo.processInfo.environment[@"USE_PORT"] integerValue] , 1);
+  if (NSProcessInfo.processInfo.environment[@"WEBDRIVER_AGENT_PORT"]) {
+    return NSMakeRange([NSProcessInfo.processInfo.environment[@"WEBDRIVER_AGENT_PORT"] integerValue] , 1);
   }
 
   return NSMakeRange(DefaultStartingPort, DefaultPortRange);
