@@ -28,8 +28,7 @@ $ npm i webdriveragent --save
 ## Tips
 
 ```
-# ref:89dccfc98e0059881e6ca6a846428dd6bb27b5a9
-# add Pods
+# ref:523c5c2899685cb21a15025918b595bd4caa5d9c
 # remove Inspector
 # build with zip compress before npm publish
 make zip
