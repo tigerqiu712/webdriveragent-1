@@ -4,7 +4,7 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <XCTWebDriverAgentLib/CDStructures.h>
+#import <WebDriverAgentLib/CDStructures.h>
 #import <CoreGraphics/CoreGraphics.h>
 
 @class NSMutableDictionary;
@@ -16,7 +16,7 @@
 }
 
 + (id)sharedClient;
-- (id)screenshotData;
+- (NSData *)screenshotData;
 - (BOOL)performAction:(int)arg1 onElement:(id)arg2 value:(id)arg3 error:(id *)arg4;
 - (id)parameterizedAttributeForElement:(id)arg1 attribute:(id)arg2 parameter:(id)arg3;
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2;
