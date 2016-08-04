@@ -11,3 +11,4 @@ coverage/
 *.sw*
 *.un~
 WebDriverAgent/
+.git
