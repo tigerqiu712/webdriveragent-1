@@ -58,7 +58,7 @@
   info[@"value"] = FBValueOrNull(snapshot.wdValue);
   info[@"label"] = FBValueOrNull(snapshot.wdLabel);
   info[@"rect"] = snapshot.wdRect;
-  info[@"frame"] = NSStringFromCGRect(snapshot.wdFrame);
+  info[@"bounds"] = NSStringFromCGRect(snapshot.wdFrame);
   info[@"isEnabled"] = [@([snapshot isWDEnabled]) stringValue];
   info[@"isVisible"] = [@([snapshot isWDVisible]) stringValue];
 
