@@ -1,6 +1,6 @@
 {
   "name": "webdriveragent",
-  "version": "1.0.16",
+  "version": "1.0.19",
   "description": "webdriveragent",
   "keywords": [
     "webdriveragent"
@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git://github.com/xudafeng/webdriveragent.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "adm-zip": "~0.4.7"
+  },
   "devDependencies": {
     "co-mocha": "*",
     "ios-simulator": "^1.0.7",
@@ -24,7 +26,7 @@
   "scripts": {
     "test": "make test",
     "jshint": "make jshint",
-    "install": "unzip -o ./WebDriverAgent.zip -d ./ 1>/dev/null"
+    "install": "node ./scripts/install.js"
   },
   "pre-commit": [
     "jshint"

@@ -24,7 +24,6 @@ describe('test', function() {
   });
 
   it('should build success', function *(done) {
-    const agentPath = WebDriverAgent.agentPath;
     var deviceId;
 
     const devices = yield Simulator.getDevices();
@@ -37,11 +36,12 @@ describe('test', function() {
       }
     });
 
-    const cmd = `xcodebuild -workspace ${agentPath} -scheme WebDriverAgent -destination id=${deviceId} build`;
+    const cmd = `xcodebuild build -project ${WebDriverAgent.projectPath} -scheme ${WebDriverAgent.schemeName} -destination id=${deviceId}`;
 
+    console.log(cmd);
     _.exec(cmd, {
       maxBuffer: 1024 * 10 * 512
-    }).then((stdout) => {
+    }).then(stdout => {
       console.log(stdout);
       done();
     });
