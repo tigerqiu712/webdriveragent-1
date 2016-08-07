@@ -6,7 +6,7 @@ install:
 	@npm install
 zip:
 	zip -r WebDriverAgent.zip ./WebDriverAgent
-test: zip install
+test: install
 	@node --harmony \
 		${npm_bin}/istanbul cover ${npm_bin}/_mocha \
 		-- \
